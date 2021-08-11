@@ -46,10 +46,10 @@ export class AuthenticationService {
     this._usersService.getUsers().subscribe(data => {
       this.utilisateurEnCours = data.find(u => u.email === signInData.email && u.password === signInData.password);
     });
-    //console.log(this.utilisateurEnCours)
+    console.log(this.utilisateurEnCours)
   }
 
-  getIsAuthenticated(): boolean {
+  getIsAuthenticated(): boolean { 
     return this.isAuthenticated;
   }
 }

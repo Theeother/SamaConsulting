@@ -5,64 +5,74 @@
       "lastName": "Seddik",
       "email": "Ahmed@gmail.com",
       "password": "1234",
-      "id": 1
+      "id": 1,
+      "admin": true
     },
     {
       "firstName": "Khalil",
       "lastName": "Seddik",
       "email": "Khalil@gmail.com",
       "password": "4444",
-      "id": 2
+      "id": 2,
+      "admin": false
     },
     {
       "firstName": "Rafaa",
       "lastName": "Seddik",
       "email": "Rafaa@gmail.com",
       "password": "3333",
-      "id": 3
+      "id": 3,
+      "admin": false
     },
     {
       "firstName": "Asma",
       "lastName": "Seddik",
       "email": "Asma@ymail.com",
       "password": "5555",
-      "id": 4
+      "id": 4,
+      "admin": false
     },
     {
       "firstName": "Khalil",
       "lastName": "Bouzid",
       "email": "kbouziditn@gmail.com",
       "password": "4444",
-      "id": 5
+      "id": 5,
+      "admin": false
     },
     {
       "firstName": "user",
       "lastName": "user",
       "email": "user@test.com",
       "password": "test",
-      "id": 6
+      "id": 6,
+      "admin": false
     },
     {
       "firstName": "user2",
       "email": "user2@test.com",
       "password": "test",
       "lastName": "user2",
-      "id": 7
+      "id": 7,
+      "admin": false
     },
     {
       "firstName": "Nejib",
       "lastName": "seddik",
       "email": "Nejib@gmail.com",
       "password": "9876",
-      "id": 8
+      "id": 8,
+      "admin": false
     },
     {
       "firstName": "Sami",
       "lastName": "seddik",
       "email": "sseddik@laposte.net",
       "password": "9871",
-      "id": 9
+      "id": 9,
+      "admin": false
     }
+   
   ],
   "products": [
     {

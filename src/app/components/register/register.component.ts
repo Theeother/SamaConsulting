@@ -11,6 +11,7 @@ export class RegisterComponent implements OnInit {
 
   users:IUsers[];
   newUser: any = {};
+  
 
 
   constructor(private _userService : UsersService) {
@@ -20,6 +21,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.getUsersData();
   }
+  
 
   getUsersData(): void {
     this._userService.getUsers().subscribe(data =>{
@@ -30,6 +32,7 @@ export class RegisterComponent implements OnInit {
   // add a new User
   saveUser(u: IUsers){
     u.id = this.users.length+1;
+    u.admin=false;
     this._userService.addUser(u).subscribe(() => {
       this.getUsersData();
     });

@@ -36,7 +36,7 @@
           <li class="nav-item" routerLinkActive="active">
             <a class="nav-link" routerLink="/products">Nos Solutions</a>
           </li>
-          <li class="nav-item" routerLinkActive="active" *ngIf="_authenticationService.isAuthenticated">
+          <li class="nav-item" routerLinkActive="active" *ngIf="_authenticationService.isAuthenticated && _authenticationService.utilisateurEnCours.admin">
             <a class="nav-link" routerLink="/edit-products">Gérer produit</a>
           </li>
           <li class="nav-item" routerLinkActive="active" *ngIf="_authenticationService.isNotAuthenticated">
