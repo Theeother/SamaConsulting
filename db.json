@@ -72,7 +72,6 @@
       "id": 9,
       "admin": false
     }
-   
   ],
   "products": [
     {
@@ -102,7 +101,8 @@
       "price": 1399.78,
       "description": "Trouver le plaisir du jeu avec ce laptop performant.",
       "urlImage": "/assets/images/laptops/laptop3.jpg",
-      "urlPage": "https://www.amazon.fr/dp/B089VXVT9B/?tag=ordinateur-portable-conso-21"
+      "urlPage": "https://www.amazon.fr/dp/B089VXVT9B/?tag=ordinateur-portable-conso-21",
+      "stock": "5"
     },
     {
       "id": 4,
@@ -131,7 +131,8 @@
       "price": 1999,
       "description": "Une conception judicieuse, à l’intérieur comme à l’extérieur.",
       "urlImage": "/assets/images/laptops/laptop4.jpg",
-      "urlPage": "https://www.amazon.fr/dp/B088HFYQGJ/?tag=ordinateur-portable-conso-21"
+      "urlPage": "https://www.amazon.fr/dp/B088HFYQGJ/?tag=ordinateur-portable-conso-21",
+      "stock": 2
     },
     {
       "id": 5,
@@ -160,7 +161,8 @@
       "price": 1069.76,
       "description": "Une conception splendide pour tout faire.",
       "urlImage": "/assets/images/laptops/laptop5.jpg",
-      "urlPage": "https://www.amazon.fr/dp/B07N7T9C7X/?tag=ordinateur-portable-conso-21"
+      "urlPage": "https://www.amazon.fr/dp/B07N7T9C7X/?tag=ordinateur-portable-conso-21",
+      "stock": 5
     },
     {
       "id": 6,
@@ -189,7 +191,8 @@
       "price": 844,
       "description": "Une conception judicieuse, à l’intérieur comme à l’extérieur.",
       "urlImage": "/assets/images/laptops/laptop6.jpg",
-      "urlPage": "https://www.amazon.fr/dp/B07LD61844/?tag=ordinateur-portable-conso-21"
+      "urlPage": "https://www.amazon.fr/dp/B07LD61844/?tag=ordinateur-portable-conso-21",
+      "stock": 5
     },
     {
       "id": 7,
@@ -218,7 +221,8 @@
       "price": 740.35,
       "description": "Une conception judicieuse, à l’intérieur comme à l’extérieur.",
       "urlImage": "/assets/images/laptops/laptop7.jpg",
-      "urlPage": "https://www.amazon.fr/dp/B08CNLLM57/?tag=ordinateur-portable-conso-21"
+      "urlPage": "https://www.amazon.fr/dp/B08CNLLM57/?tag=ordinateur-portable-conso-21",
+      "stock": 5
     },
     {
       "id": 8,
@@ -247,7 +251,8 @@
       "price": 869.99,
       "description": "Trouver le plaisir du jeu avec ce laptop performant.",
       "urlImage": "/assets/images/laptops/laptop8.jpg",
-      "urlPage": "https://www.amazon.fr/dp/B089N8RZQZ/?tag=ordinateur-portable-conso-21"
+      "urlPage": "https://www.amazon.fr/dp/B089N8RZQZ/?tag=ordinateur-portable-conso-21",
+      "stock": 5
     },
     {
       "id": 9,
@@ -276,7 +281,8 @@
       "price": 1349,
       "description": "Trouver le plaisir du jeu avec ce laptop performant.",
       "urlImage": "/assets/images/laptops/laptop9.jpg",
-      "urlPage": "https://www.amazon.fr/dp/B08FRPYLBW/?tag=ordinateur-portable-conso-21"
+      "urlPage": "https://www.amazon.fr/dp/B08FRPYLBW/?tag=ordinateur-portable-conso-21",
+      "stock": 5
     },
     {
       "id": 10,
@@ -305,7 +311,8 @@
       "price": 699.99,
       "description": "Une conception splendide pour tout faire.",
       "urlImage": "/assets/images/laptops/laptop10.jpg",
-      "urlPage": "https://www.amazon.fr/dp/B08BCS7B6T/?tag=ordinateur-portable-conso-21"
+      "urlPage": "https://www.amazon.fr/dp/B08BCS7B6T/?tag=ordinateur-portable-conso-21",
+      "stock": 5
     },
     {
       "id": 11,
@@ -334,7 +341,8 @@
       "price": 1670.79,
       "description": "Connectez-vous à l’essentiel, pour en faire plus.",
       "urlImage": "/assets/images/laptops/laptop11.jpg",
-      "urlPage": "https://www.amazon.fr/HP-Spectre-15-df0126ng-i7-8750H-GTX1050Ti/dp/B07JLSJQJV"
+      "urlPage": "https://www.amazon.fr/HP-Spectre-15-df0126ng-i7-8750H-GTX1050Ti/dp/B07JLSJQJV",
+      "stock": 5
     },
     {
       "id": 12,
@@ -360,10 +368,11 @@
       "rating": 4.5,
       "inStock": true,
       "promo": true,
-      "price": 2079,
+      "price": "2002",
       "description": "Une conception splendide pour tout faire.",
       "urlImage": "/assets/images/laptops/laptop12.jpg",
-      "urlPage": "https://www.amazon.fr/Dell-Touchscreen-Laptop-i7-10750H-XPS9500-7845SLV-PUS/dp/B0897WZSZ6"
+      "urlPage": "https://www.amazon.fr/Dell-Touchscreen-Laptop-i7-10750H-XPS9500-7845SLV-PUS/dp/B0897WZSZ6",
+      "stock": "15"
     }
   ],
   "authenticatedUser": [

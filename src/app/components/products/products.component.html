@@ -73,7 +73,8 @@
                 {{ laptop.price }}
                 <i class="fa fa-eur" aria-hidden="true"></i>
               </h5>
-              <div class="badge badge-success mb-2">EN STOCK</div>
+              <div class="badge badge-success mb-2" *ngIf="laptop.stock>0; else elseBlock">EN STOCK</div>
+              <ng-template #elseBlock><div class="badge badge-danger mb-2" >HORS STOCK</div></ng-template>
               <div class="badge badge-warning">PROMO..!</div>
             </div>
           </div>
@@ -126,6 +127,7 @@
         <div class="card-footer d-flex justify-content-around">
           <button type="button" class="btn btn-outline-primary btn-sm"
             (click)="addProductToCart(laptop)"
+            [disabled]="laptop.stock<=0"
           >AJOUTER <i class="fa fa-cart-plus" aria-hidden="true"></i>
           </button>
           <!-- (click)="_cartService.AddProduct(laptop)" -->

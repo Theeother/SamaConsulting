@@ -23,7 +23,8 @@ export class CartService {
       series:Prd.series,
       price:Prd.price,
       urlImage:Prd.urlImage,
-      qty:1
+      qty:1,
+      stock:Prd.stock
     }
     this.PrixTotal = this.PrixTotal + Prd.price;
     this.ListeProductsSelected.push(Prds);
@@ -56,7 +57,8 @@ export class CartService {
     for(let p of this.ListeProductsSelected){
       if(prd.id == p.id){
         if(op == "+"){
-          p.qty = p.qty+1;
+          if (p.stock!=p.qty)
+            p.qty = p.qty+1;
         }else if (p.qty > 0) {
           p.qty = p.qty -1;
         }

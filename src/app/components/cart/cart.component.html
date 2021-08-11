@@ -31,7 +31,7 @@
             <input type="button" value="-" class="minus"
             (click)="_cartService.changeQte(laptop, '-')"
             />
-            <input type="number" step="1" max="99" min="1" value="{{ laptop.qty }}" title="Qty" class="qty" size="4"/>
+            <input type="number" disabled step="1" max="99" min="1" value="{{ laptop.qty }}" title="Qty" class="qty" size="4"/>
             <input type="button" value="+" class="plus"
               (click)="_cartService.changeQte(laptop, '+')"
             />
@@ -143,8 +143,12 @@
 
       <div class="modal-footer">
         <div class="text-right pull-right">
-          <button class="btn btn-danger btn-sm" type="button">Imprimer</button>
-          <button type="button" class="btn btn-sm btn-secondary ml-5" data-dismiss="modal"
+          <button class="btn btn-info btn-sm" type="button">Imprimer</button>
+          <button class="btn btn-success btn-sm ml-5" type="button"
+          (click)="payer()"
+          data-dismiss="modal"
+          >Payer</button>
+          <button type="button" class="btn btn-sm btn-danger ml-5" data-dismiss="modal"
           click="cancelLaptopDetails()"
           >Fermer</button>
         </div>

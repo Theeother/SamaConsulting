@@ -13,6 +13,7 @@ export interface IProduct {
   OS: string;
   price: number;
   urlImage: string;
+  stock:number;
 }
 
 export interface IProduct2 {
@@ -24,4 +25,5 @@ export interface IProduct2 {
   price: number;
   urlImage: string;
   qty:number;
+  stock:number;
 }

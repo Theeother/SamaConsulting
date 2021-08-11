@@ -24,6 +24,7 @@ export class ProductsService {
     return this.httpClient.delete(`${this._apiUrl+'/'+id}`);
   }
   getById(id: number) {
+    console.log(this.httpClient.get<IProduct>(`${this._apiUrl+'/'+id}`));
     return this.httpClient.get<IProduct>(`${this._apiUrl+'/'+id}`);
   }
 
