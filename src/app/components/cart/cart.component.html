@@ -1,0 +1,157 @@
+<div class="container">
+  <div class="card shopping-cart">
+    <div class="card-header bg-dark text-light">
+        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+        Shipping cart - <span class="text-warning font-weight-bold">{{ factureUser }}</span>
+      <a class="btn btn-outline-warning btn-sm pull-right" routerLink="/products">
+        Continuez shopping
+    </a>
+    </div>
+
+    <div class="card-body">
+      <!-- Product -->
+      <div class="row d-flex align-items-baseline text-center mb-3" *ngFor="let laptop of _cartService.ListeProductsSelected" >
+
+        <div class="col-md-2">
+          <img
+            class="img-responsive rounded"
+            src="{{ laptop.urlImage }}"
+            alt="prewiew"
+          />
+        </div>
+
+        <div class="col-md-3">
+          <h4 class="product-name"> <strong>{{ laptop.brand }}</strong> </h4>
+          <h4> <small>{{ laptop.model }}</small> </h4>
+        </div>
+
+        <div class="col-md-3">
+          <div class="quantity d-flex align-items-baseline text-center justify-content-center">
+            <h5 class="pt-5"><strong>Quantité: </strong></h5>
+            <input type="button" value="-" class="minus"
+            (click)="_cartService.changeQte(laptop, '-')"
+            />
+            <input type="number" step="1" max="99" min="1" value="{{ laptop.qty }}" title="Qty" class="qty" size="4"/>
+            <input type="button" value="+" class="plus"
+              (click)="_cartService.changeQte(laptop, '+')"
+            />
+          </div>
+      </div>
+      <div class="col-md-2 d-flex justify-content-between">
+        <h5 class="pt-5"><strong>x {{ laptop.price }} </strong></h5>
+        <h5 class="pt-5"><strong> <i class="fa fa-eur" aria-hidden="true"></i></strong></h5>
+      </div>
+      <div class="col-md-1">
+        <button type="button" class="btn btn-outline-danger btn-xs"
+          (click)="_cartService.RemoveProduct(laptop)"
+        > <i class="fa fa-trash" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+    <!-- Fin Product -->
+
+    <div class="card-footer">
+      <div class="pull-right m-3">
+        <!-- Button trigger modal -->
+        <button type="button"  class="btn btn-success pull-right ml-3" data-toggle="modal" data-target="#produitDetailsModal"
+        click="showInvoice(laptop)">Réglez facture</button>
+        <div class="pull-right" style="margin: 5px">
+          Total price: <strong>{{ _cartService.PrixTotal.toFixed(2) }}€</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Scrollable modal -->
+<div class="modal fade" id="produitDetailsModal" tabindex="-1" aria-labelledby="produitDetailsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="produitDetailsModalLabel"><i class="fa fa-info-circle" aria-hidden="true"></i> <strong> Facture d'achat laptops</strong></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- Modal Body -->
+      <div class="modal-body mb-4">
+            <!-- Corps facture d'achat -->
+              <div class="row d-flex justify-content-center">
+                <div class="col-md-10 mt-4 table-responsive">
+                    <div class="p-3 bg-white rounded">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h1 class="text-uppercase">Facture</h1>
+                                <div class="billed"><span class="font-weight-bold text-uppercase">Facturé:</span><span class="ml-1">{{ factureUser }}</span></div>
+                                <div class="billed"><span class="font-weight-bold text-uppercase">Date:</span><span class="ml-1">{{ factureDate }}</span></div>
+                                <div class="billed"><span class="font-weight-bold text-uppercase">No Commande:</span><span class="ml-1">{{ codeFacture }}</span></div>
+                            </div>
+                            <div class="col-md-6 text-right mt-3">
+                                <h4 class="text-danger mb-0"><strong>PC•DELUXE SHOP</strong></h4>
+                                <p>Tunis, Tunisie, cpp. 2021</p>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped">
+                                  <caption> </caption>
+                                    <thead>
+                                        <tr class="h5">
+                                            <th scope="col">Modèle du Laptop</th>
+                                            <th scope="col text-center">Unités</th>
+                                            <th scope="col text-center">P.U.</th>
+                                            <th scope="col text-center">Prix</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let laptop of _cartService.ListeProductsSelected">
+                                            <td>{{ laptop.brand }} {{ laptop.model }} {{ laptop.series }} <br/>
+                                              (Catégorie: {{ laptop.category }})
+                                            </td>
+                                            <td class="text-center">{{ laptop.qty }}</td>
+                                            <td class="text-center">{{ laptop.price }}</td>
+                                            <td class="text-center">{{ laptop.qty*laptop.price }}</td>
+                                        </tr>
+                                        <tr class="h6 font-weight-bold">
+                                          <td></td>
+                                          <td></td>
+                                          <td class="text-center">THT</td>
+                                          <td class="text-center">{{ _cartService.PrixTotal.toFixed(2) }}€</td>
+                                      </tr>
+                                        <tr class="h6 font-weight-bold">
+                                          <td></td>
+                                          <td></td>
+                                          <td class="text-center">TVA</td>
+                                          <td class="text-center">{{ (_cartService.PrixTotal*tauxTVA).toFixed(2) }}€</td>
+                                      </tr>
+                                        <tr class="h6 font-weight-bold">
+                                            <td></td>
+                                            <td></td>
+                                            <td class="text-center">Total</td>
+                                            <td class="text-center">{{ ((_cartService.PrixTotal)+(_cartService.PrixTotal*tauxTVA)).toFixed(2) }}€</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Fin corps facture d'achat -->
+      </div>
+      <!-- Fin Modal Body -->
+
+      <div class="modal-footer">
+        <div class="text-right pull-right">
+          <button class="btn btn-danger btn-sm" type="button">Imprimer</button>
+          <button type="button" class="btn btn-sm btn-secondary ml-5" data-dismiss="modal"
+          click="cancelLaptopDetails()"
+          >Fermer</button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- Fin scrollable modal -->

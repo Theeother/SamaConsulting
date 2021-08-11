@@ -1,0 +1,65 @@
+<div class="bodyStyle">
+	<div class="container loginBoxStyle text-center">
+  <div class="card">
+    <div class="card-body">
+
+      <form class="form-signin"
+        (ngSubmit)="onSubmit(loginForm)"
+        #loginForm="ngForm"
+        novalidate
+      >
+        <img class="mb-4" src="/assets/images/logos/logosama.png" alt="logo Sama-Consulting" />
+        <h1 class="h3 mb-3 font-weight-normal">
+          Connectez-vous pour accéder au site
+        </h1>
+        <label for="email" class="sr-only">Adresse e-mail</label>
+        <input type="email" id="email" name="email" class="form-control mt-4"
+          placeholder="Entrez votre e-mail"
+          autofocus
+          required
+          pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z_]{2,3}$"
+          ngModel
+          #email = "ngModel"
+          [class.is-invalid]="email.invalid && email.touched"
+        />
+        <!-- <small class="text-danger" [class.d-none]="email.valid || email.untouched">Ce champ est requis.</small> -->
+        <div class="text-danger" *ngIf="email.errors && email.invalid && email.touched">
+          <small *ngIf="email.errors.required">Ce champ est requis.</small>
+          <small *ngIf="email.errors.pattern">Cet e-mail n'est pas valide.</small>
+        </div>
+        <label for="password" class="sr-only">Mot de passe</label>
+        <input type="password" id="password" name="password" class="form-control mb-0 mt-4"
+          placeholder="Mot de passe"
+          autocomplete="on"
+          minlength="4"
+          required
+          ngModel
+          #password = "ngModel"
+          [class.is-invalid]="password.invalid && password.touched"
+        />
+        <!-- <small class="text-danger" [class.d-none]="password.valid || password.untouched">Ce champ est requis.</small> -->
+        <div class="text-danger" *ngIf="password.errors && password.invalid && password.touched">
+          <small *ngIf="password.errors.required">Ce champ est requis.</small>
+          <small *ngIf="password.errors.minlength">Doit avoir au moins 4 caractères.</small>
+        </div>
+        <button class="btn btn-lg btn-warning btn-block mt-4" type="submit"
+          [disabled]="loginForm.form.invalid"
+        >Se connecter
+        </button>
+
+
+        <!-- <div class="alert alert-danger" role="alert" *ngIf="isFormInvalid">
+          Prière de remplir tous les champs.
+        </div> -->
+        <div class="alert alert-danger mt-4" role="alert" *ngIf="areCredentialsInvalid && loginForm.form.valid">
+          Ce compte n'est pas enregistré ou e-mail et/ou mot de passe invalides.
+        </div>
+        
+        <p class="mt-5 mb-3 text-muted">Vous n'avez pas de comptes ?<br/> <a class="nav-link" routerLink="/register">enregistrez-vous par ici.</a></p>
+
+        <p class="mt-1 mb-3 text-muted">PC-DELUXE &copy; 2020-2021</p>
+      </form>
+    </div>
+  </div>
+</div>
+</div>

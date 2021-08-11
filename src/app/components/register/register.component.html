@@ -1,0 +1,88 @@
+
+<div class="formStyle mt-4 p-b-100">
+  <div class="wrapper">
+    <h2>Inscrivez-vous</h2>
+    <div class="card card-3">
+      <div class="card-heading"></div>
+      <div class="card-body">
+        <h2 class="title">Enresgistrement</h2>
+        <!-- Formulaire d'enregistrement -->
+        <form
+          #registerForm="ngForm"
+          novalidate
+        >
+          <div class="input-group">
+            <input type="text" id="firstName" name="firstName"
+              placeholder="Prénom"
+              autofocus
+              required
+              [(ngModel)]="newUser.firstName"
+              #nom = "ngModel"
+              [class.is-invalid]="nom.invalid && nom.touched"
+            />
+            <label for="firstName"><i class="fa fa-user input-icon" aria-hidden="true"></i></label>
+            <small class="text-danger" [class.d-none]="nom.valid || nom.untouched">Ce champ est requis.</small>
+          </div>
+
+          <div class="input-group">
+            <input type="text" id="lastname" name="lastname"
+              placeholder="Nom de famille"
+              required
+              [(ngModel)]="newUser.lastName"
+              #prenom = "ngModel"
+              [class.is-invalid]="prenom.invalid && prenom.touched"
+            />
+            <label for="lastname"><i class="fa fa-user input-icon" aria-hidden="true"></i></label>
+            <small class="text-danger" [class.d-none]="prenom.valid || prenom.untouched">Ce champ est requis.</small>
+          </div>
+
+          <div class="input-group">
+            <input type="email" id="email" name="email"
+              placeholder="Votre e-mail (login)"
+              required
+              pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z_]{2,3}$"
+              [(ngModel)]="newUser.email"
+              #email = "ngModel"
+              [class.is-invalid]="email.invalid && email.touched"
+            />
+            <label for="email"><i class="fa fa-envelope-o input-icon" aria-hidden="true"></i></label>
+            <div class="text-danger" *ngIf="email.errors && email.invalid && email.touched">
+              <small *ngIf="email.errors.required">Ce champ est requis.</small>
+              <small *ngIf="email.errors.pattern">Cet e-mail n'est pas valide.</small>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <input type="text" id="password" name="password"
+              placeholder="Mot de passe"
+              required
+              minlength="4"
+              [(ngModel)]="newUser.password"
+              #password = "ngModel"
+              [class.is-invalid]="password.invalid && password.touched"
+            />
+            <label for="password"><i class="fa fa-key input-icon" aria-hidden="true"></i></label>
+            <!-- <small class="text-danger" [class.d-none]="password.valid || password.untouched">Ce champ est requis.</small> -->
+            <div class="text-danger" *ngIf="password.errors && password.invalid && password.touched">
+              <small *ngIf="password.errors.required">Ce champ est requis.</small>
+              <small *ngIf="password.errors.minlength">Doit avoir au moins 4 caractères.</small>
+            </div>
+          </div>
+
+          <div class="form-group mt-4">
+            <button type="button" class="btn btn-success mr-2"
+            [disabled]="registerForm.form.invalid"
+              (click)="saveUser(newUser)"
+              > Valider
+            </button>
+            <button type="button" class="btn btn-warning"
+              (click)="cancelNewUser()"
+            > Annuler
+            </button>
+          </div>
+        </form>
+        <!-- Fin Formulaire d'enregistrement -->
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,102 @@
+/* Style : produits*/
+
+/* i {
+  color: gold;
+}*/
+
+/* Image Heading */
+
+.bg-image-full {
+  background-color: #343a40;
+  background: no-repeat center scroll;
+  background-size: cover;
+  border-radius: 15px;
+}
+
+/* Cartes produits */
+.card {
+  transition: box-shadow .3s;
+  /*transition: box-shadow .25s ease;*/
+  border-radius:10px;
+  border: 1px solid #ccc;
+  background: #fff;
+  float: left;
+
+}
+
+.card:hover {
+  box-shadow: 12px 12px 15px rgba(33,33,33,.2);
+  /*box-shadow: 0 0 11px rgba(33,33,33,.2);*/
+  /*box-shadow: 0 1px 3px rgba(3,0,71,.09);*/
+}
+
+dt {
+  padding-left: 15px !important;
+  padding-right: 5px !important;
+  /* width: 60px; */
+}
+
+dd {
+  padding-left: 5px !important;
+  padding-right: 10px !important;
+}
+
+/* Images produits */
+
+/* img {
+  border: 3px solid #ccc;
+  border-radius: 15px;
+  width: 90%;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 15px;
+} */
+
+/* img {
+  padding: 5px;
+  border: 8px solid #999999;
+  background-color: #e6e6e6;
+  border-radius: 15px;
+  width: 90%;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+} */
+
+img.imageLaptop {
+  display: block;
+  background: transparent;
+  background-color: #e6e6e6;
+  padding: 8px;
+  border: 1px solid #ccc;
+  box-shadow: 7px 7px 10px #999;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 210px;
+  max-height: 210px;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Modal */
+
+.img-thumbnail {
+  max-width: 210px;
+  height: auto;
+  border: 2px solid #ccc;
+  box-shadow: 7px 7px 10px #999;
+  border-radius: .25rem;
+  padding: .25rem;
+  background-color: #fff;
+
+}
+
+tbody > tr {
+  cursor: pointer;
+}
+
+.result{
+  margin-top:20px;
+}

@@ -1,0 +1,12 @@
+/* Styles: panier (shopping cart) */
+
+img {
+  width: 120px;
+  /* height: 80px; */
+}
+
+.quantity, input {
+  font-weight: bold;
+  color: dimgray;
+  text-align: center;
+}

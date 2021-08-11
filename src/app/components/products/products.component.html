@@ -1,0 +1,258 @@
+<!-- Page Content -->
+<div class="container-fluid">
+
+  <div class="row">
+    <!-- Catégories col-lg-3 -->
+  <div class="col-lg-5">
+      <h1 class="my-4">Nos Solutions</h1>
+      <div class="list-group">
+        <button type="button" class="list-group-item list-group-item-action"
+          (click)="categoryFilter('Gestion Laboratoire')"
+        >Gestion Laboratoire</button>
+        <button type="button" class="list-group-item list-group-item-action"
+          (click)="categoryFilter('Gestion entreprise')"
+        >Gestion d'entreprise</button>
+        <button type="button" class="list-group-item list-group-item-action"
+          (click)="categoryFilter('Revive')"
+        >Revive</button>
+        <button type="button" class="list-group-item list-group-item-action"
+         (click)="categoryFilter('Solution Web')"
+        >Solution Web</button>
+       </div> 
+    </div>
+ 
+    <!-- Fin Catégories -->
+   <!-- Liste produits col-lg-9 -->
+   <div class="col-lg-7">
+
+    <!-- Image-header element -->
+    <div class="py-5 bg-image-full mb-4"
+    [style.background-image]="'url(/assets/images/sliders/slider1_bg11.jpg)'">
+      <!-- Put anything you want here! -->
+      <p> <br/> </p>
+      <div style="height: 250px;"></div>
+    </div>
+
+  <div class="row d-flex flex-wrap justify-content-around">
+    <div
+      class="col- d-flex align-items-stretch mb-4"
+      *ngFor="let laptop of filteredProducts"
+    >
+      <!-- Card -->
+      <div class="card card-hover" style="width: 16rem">
+        <img class="imageLaptop card-img-top rounded-top"
+          src="{{ laptop.urlImage }}"
+          alt="laptop image"
+        />
+        <!-- Card body -->
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <div
+              class="d-flex flex-column bd-highlight mb-3 justify-content-start"
+            >
+              <h4 class="card-title">
+                <a href="#"
+                  >{{ laptop.brand }}
+                  <i class="fa fa-hand-o-left" aria-hidden="true"></i
+                ></a>
+              </h4>
+              <div>
+                <span>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                </span>
+              </div>
+            </div>
+            <div
+              class="d-flex flex-column bd-highlight mb-3 justify-content-center"
+            >
+              <h5>
+                {{ laptop.price }}
+                <i class="fa fa-eur" aria-hidden="true"></i>
+              </h5>
+              <div class="badge badge-success mb-2">EN STOCK</div>
+              <div class="badge badge-warning">PROMO..!</div>
+            </div>
+          </div>
+
+          <h5 class="text-truncate">
+            <a href="#"
+              ><i class="fa fa-arrow-right" aria-hidden="true"></i>
+              {{ laptop.model }}</a
+            >
+          </h5>
+          <hr />
+          <div class="d-flex justify-content-between align-items-center">
+            <i class="fa fa-laptop" aria-hidden="true"></i>
+            {{ laptop.screenSize }}&quot;
+            <i class="fa fa-microchip" aria-hidden="true"></i>
+            {{ laptop.cpuFreq }}
+            <i class="fa fa-minus-square" aria-hidden="true"></i>
+            {{ laptop.ramSize }}
+            <i class="fa fa-hdd-o" aria-hidden="true"></i>
+            {{ laptop.hddSize }}
+          </div>
+          <hr />
+          <div class="card-text">
+            <dl class="row small">
+              <dt class="col-sm-3">Catég:</dt>
+              <dd class="col-sm-9">{{ laptop.category }}</dd>
+              <dt class="col-sm-3">CPU:</dt>
+              <dd class="col-sm-9">
+                {{ laptop.cpuBrand }} {{ laptop.cpuModel }}
+                {{ laptop.cpuFreq }}GHz
+              </dd>
+              <dt class="col-sm-3">RAM:</dt>
+              <dd class="col-sm-9">
+                {{ laptop.ramType }} {{ laptop.ramSize }}Go
+              </dd>
+              <dt class="col-sm-3">DD:</dt>
+              <dd class="col-sm-9">
+                {{ laptop.hddType }} {{ laptop.hddSize }}Go
+              </dd>
+              <dt class="col-sm-3">GPU:</dt>
+              <dd class="col-sm-9">
+                {{ laptop.gpuBrand }} {{ laptop.gpuModel }}
+              </dd>
+              <dt class="col-sm-3">OS:</dt>
+              <dd class="col-sm-9">{{ laptop.OS }}</dd>
+            </dl>
+          </div>
+        </div>
+        <!-- Card footer -->
+        <div class="card-footer d-flex justify-content-around">
+          <button type="button" class="btn btn-outline-primary btn-sm"
+            (click)="addProductToCart(laptop)"
+          >AJOUTER <i class="fa fa-cart-plus" aria-hidden="true"></i>
+          </button>
+          <!-- (click)="_cartService.AddProduct(laptop)" -->
+
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#produitDetailsModal"
+          (click)="showLaptopDetails(laptop.id)"
+          >DETAILS <i class="fa fa-info-circle" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.row -->
+</div>
+<!-- Fin Liste produits -->
+</div>
+<!-- /.row -->
+</div>
+<!-- /.container -->
+
+<!-- Scrollable modal -->
+<div class="modal fade" id="produitDetailsModal" tabindex="-1" aria-labelledby="produitDetailsModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title" id="produitDetailsModalLabel"><i class="fa fa-info-circle" aria-hidden="true"></i> <strong> {{ laptopDetails.id }}</strong> - {{ laptopDetails.brand }} {{ laptopDetails.model }} {{ laptopDetails.series }}</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <!-- Modal Body -->
+  <div class="modal-body mb-4">
+    <div class="row d-flex flex-row justify-content-around">
+      <div class="pull-left col-md-8 mt-4 table-responsive">
+        <!-- Caractéristiques Produit -->
+        <table class="table table-bordered table-striped table-sm">
+          <caption> </caption>
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col" colspan="2">Caractéristiques techniques</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Modèle</th>
+              <td>
+                <strong>{{ laptopDetails.brand }}</strong>
+                {{ laptopDetails.model }} ({{ laptopDetails.series }})
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Catégorie</th>
+              <td>{{ laptopDetails.category }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Ecran</th>
+              <td>{{ laptopDetails.screenSize }}"</td>
+            </tr>
+            <tr>
+              <th scope="row">Processeur</th>
+              <td> {{ laptopDetails.cpuModel }} - {{ laptopDetails.cpuFreq }} Ghz </td>
+            </tr>
+            <tr>
+              <th scope="row">Mémoire RAM</th>
+              <td>{{ laptopDetails.ramType }} - {{ laptopDetails.ramSize }} Go</td>
+            </tr>
+            <tr>
+              <th scope="row">Disque Dur</th>
+              <td>{{ laptopDetails.hddType }} - {{ laptopDetails.hddSize }} Go</td>
+            </tr>
+            <tr>
+              <th scope="row">Carte graphique</th>
+              <td>{{ laptopDetails.gpuBrand }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Système d'exploitation</th>
+              <td>{{ laptopDetails.OS }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- Fin Caractéristiques Produit -->
+      </div>
+      <div class="col-md-4 mt-4">
+        <img src="{{ laptopDetails.urlImage }}" alt="laptop image" class="img-thumbnail">
+      </div>
+    </div>
+
+    <!-- collapse: zone description -->
+    <div class="accordion" id="accordionExample">
+      <div class="card border-dark">
+        <div class="card-header" id="headingOne">
+          <h2 class="mb-0">
+            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+              <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> Description sommaire
+            </button>
+          </h2>
+        </div>
+
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+          <div class="card-body">
+            <strong>{{ laptopDetails.description }}</strong> <br/>
+            Le <strong>{{ laptopDetails.brand }} {{ laptopDetails.model }} {{ laptopDetails.series }}</strong> est conçu pour des performances durables, cet ordinateur portable <strong>{{ laptopDetails.brand }}</strong> équipé d’un écran de {{ laptopDetails.screenSize }}" au design élégant est doté d’une batterie longue durée qui vous permet de rester connecté, productif et de vous divertir toute la journée. Enchaînez les tâches, ou détendez-vous et interagissez avec vos amis, grâce à un processeur {{ laptopDetails.cpuBrand }} {{ laptopDetails.cpuModel }} cadencé à {{ laptopDetails.cpuFreq }} Ghz et un magnifique écran. Le pouvoir de tout faire, toute la journée.
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Fin collapse: zone description -->
+
+  </div>
+  <!-- Fin Modal Body -->
+
+  <div class="modal-footer">
+    <div class="text-right pull-right col-md-3">
+      Prix: <br/>
+      <span class="h3 text-muted"><strong>{{ laptopDetails.price }} <i class="fa fa-eur" aria-hidden="true"></i></strong></span>
+    </div>
+    <div class="text-right pull-right col-md-3">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal"
+      (click)="cancelLaptopDetails()"
+      >Fermer</button>
+    </div>
+  </div>
+
+</div>
+</div>
+</div>
+<!-- Fin scrollable modal -->
+
+
