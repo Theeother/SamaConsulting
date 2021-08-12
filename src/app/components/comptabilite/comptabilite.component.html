@@ -1,0 +1,61 @@
+<!-- Page Content -->
+<div class="container">
+    <div class="d-flex flex-row justify-content-between">
+      <h2 class="p-2">Liste des laptops disponibles</h2>
+  
+      <div class="p-2">
+        <div>
+          <button class="btn btn-success" (click)='export()'>Exporter</button>
+        </div> 
+      </div>
+  
+    </div>
+    <div class="row mt-4 table-responsive">
+      <!-- Liste Produits -->
+      <table class="table table-bordered table-striped table-sm" id="excel-table">
+        <caption>Liste des laptops vondu</caption>
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Modèles</th>
+            <th scope="col">Catégorie</th>
+            <th scope="col">userId</th>
+            <th scope="col">productId</th>
+            <th scope="col">brand</th>
+            <th scope="col">series</th>
+            <th scope="col">price</th>
+            <th scope="col">qty</th>
+            <th scope="col">Total</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let laptop of laptopsSold">
+            <th scope="row">{{ laptop.id }}</th>
+            <td>
+              <strong>{{ laptop.brand }}</strong> <br />
+              {{ laptop.model }}
+            </td>
+            <td>{{ laptop.category }}</td>
+            <td>{{ laptop.userId }}</td>
+            <td>{{ laptop.productId }}</td>
+            <td>{{ laptop.brand }}</td>
+            <td>{{ laptop.series }}</td>
+            <td>{{ laptop.price }}</td>
+            <td>{{ laptop.qty }}</td>
+            <td>{{ laptop.qty * laptop.price }}</td>
+            
+            
+            
+          </tr>
+            
+          <tr>
+            <td colspan="9">Totale</td>
+            <td>{{total}}</td>
+
+          </tr>
+        </tbody>
+      </table>
+      <!-- Fin Liste Produits -->
+    </div>
+  </div>

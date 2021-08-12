@@ -7,11 +7,18 @@
 
 <!-- Page Content -->
 <div class="container">
-  <h2>Liste des laptops disponibles</h2>
-  <input class="btn-primary" type="file" (change)="onFileChange($event)" multiple="false" />
-  <div *ngIf="submitbut">
-    <button class="btn-primary" (click)='submit()'>Submit</button>
-  </div> 
+  <div class="d-flex flex-row justify-content-between">
+    <h2 class="p-2">Liste des laptops disponibles</h2>
+
+    <div class="p-2">
+      <label for="import">Importer des laptop</label>
+      <div><input class="btn-primary" type="file" (change)="onFileChange($event)" multiple="false" name="import"/></div>
+      <div *ngIf="submitbut">
+        <button class="btn-primary" (click)='submit()'>Submit</button>
+      </div> 
+    </div>
+
+  </div>
   <div class="row mt-4 table-responsive">
     <!-- Liste Produits -->
     <table class="table table-bordered table-striped table-sm">

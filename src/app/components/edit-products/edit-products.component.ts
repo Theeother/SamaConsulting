@@ -142,7 +142,7 @@ export class EditProductsComponent implements OnInit {
       this.saveLaptop(this.lapToAdd);
       this.laptopsList=[...this.laptopsList,this.lapToAdd];
       this.lapToAdd=<IProduct>{};
-      
+      this.submitbut=false;
 
 
 

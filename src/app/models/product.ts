@@ -27,3 +27,17 @@ export interface IProduct2 {
   qty:number;
   stock:number;
 }
+
+
+export interface IProductSold {
+  id:number;
+  userId: number;
+  productId: number;
+  category: string;
+  brand: string;
+  model: string;
+  series: string;
+  price: number;
+  urlImage: string;
+  qty:number;
+}

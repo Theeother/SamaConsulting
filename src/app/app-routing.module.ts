@@ -6,6 +6,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProductsComponent } from './components/products/products.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ComptabiliteComponent } from './components/comptabilite/comptabilite.component';
 import { AuthGuard } from './services/auth.guard';
 
 
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'products', component: ProductsComponent },
   { path: 'edit-products', component: EditProductsComponent, canActivate : [AuthGuard]},
+  { path: 'comptabilite', component: ComptabiliteComponent, canActivate : [AuthGuard]},
   { path: 'cart', component: CartComponent,canActivate : [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },

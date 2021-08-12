@@ -39,6 +39,11 @@
           <li class="nav-item" routerLinkActive="active" *ngIf="_authenticationService.isAuthenticated && _authenticationService.utilisateurEnCours.admin">
             <a class="nav-link" routerLink="/edit-products">Gérer produit</a>
           </li>
+
+          <li class="nav-item" routerLinkActive="active" *ngIf="_authenticationService.isAuthenticated && _authenticationService.utilisateurEnCours.admin">
+            <a class="nav-link" routerLink="/comptabilite">comptabilité</a>
+          </li>
+
           <li class="nav-item" routerLinkActive="active" *ngIf="_authenticationService.isNotAuthenticated">
             <a class="nav-link" routerLink="/login">Se Connecter</a>
           </li>
@@ -46,7 +51,7 @@
             <a class="nav-link" routerLink="/register">S'enregistrer</a>
           </li>
           <li class="nav-item" routerLinkActive="active" *ngIf="_authenticationService.isAuthenticated">
-            <a class="nav-link" routerLink="/cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Acheter</a>
+            <a class="nav-link" routerLink="/cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Panier</a>
           </li>
         </ul>
         <ul class="navbar-nav ml-auto"*ngIf="_authenticationService.isAuthenticated">

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { IProduct2,IProduct } from 'src/app/models/product';
+import { IProduct2,IProduct,IProductSold } from 'src/app/models/product';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductsService } from '../../services/products.service';
+import { SellService } from '../../services/sell.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -19,6 +20,8 @@ export class CartComponent implements OnInit {
   factureUser: string = "aucun";
   product :IProduct;
   laptopsList:IProduct[];
+  laptopsSold:IProductSold[]=[];
+  soldItem=<IProductSold>{};
   // Pour la génération du code facture
   codeFacture = '#LAP'+ this.toDayDate.replace(/-/g,'')+ this.toDayTime.replace(/:/g,'');
 
@@ -31,9 +34,13 @@ export class CartComponent implements OnInit {
 
   getLaptopData(): void {
     this._productService.getProducts().subscribe(data => {this.laptopsList=data});
+    this._sellService.getProducts().subscribe(data => {this.laptopsSold=data});
   }
 
-  constructor(public _cartService: CartService, public _authenticationService: AuthenticationService,private _productService : ProductsService,private router: Router) {
+  constructor(public _cartService: CartService,
+     public _authenticationService: AuthenticationService,
+     private _productService : ProductsService,private router: Router,
+     private _sellService :SellService) {
     this.factureUser = this._authenticationService.utilisateurEnCours.firstName+" "+ this._authenticationService.utilisateurEnCours.lastName;
   }
 
@@ -50,10 +57,9 @@ export class CartComponent implements OnInit {
   } 
 
   payer(){
+    this.soldItem.userId=this._authenticationService.utilisateurEnCours.id;
     for (let laptop of this._cartService.ListeProductsSelected){
-      //console.log(this.laptopsList.filter(u=>{
-      //  return (u.id==laptop.id);
-      //}));
+      //tan9is l stock
 
       this.product=this.laptopsList.filter(u=>{
         return (u.id==laptop.id);
@@ -64,9 +70,39 @@ export class CartComponent implements OnInit {
         this.getLaptopData();
       });
       
+      // adding to sold items for comptabelité
+
+      this.soldItem.productId=this.product.id;
+      this.soldItem.category=this.product.category;
+      this.soldItem.brand=this.product.brand;
+      this.soldItem.model=this.product.model;
+      this.soldItem.series=this.product.series;
+      this.soldItem.price=this.product.price;
+      this.soldItem.urlImage=this.product.urlImage;
+      this.soldItem.qty=laptop.qty;
+      this.addSoldLap(this.soldItem);
+      
+
+
 
     }
     this.router.navigate(['home']);
+  }
+
+  addSoldLap(lap: IProductSold){
+    
+    // add a new product
+    if (this.laptopsSold.length !=0)
+      { console.log(this.laptopsSold);
+        lap.id = this.laptopsSold[this.laptopsSold.length-1].id +1;}
+    else {console.log(this.laptopsSold);
+      lap.id=1;
+    }
+    
+    this._sellService.addProduct(lap).subscribe(res => {
+      this.laptopsSold=[...this.laptopsSold,lap];
+      console.log(this.laptopsSold);
+    });
   }
 
 }
