@@ -8,6 +8,10 @@
 <!-- Page Content -->
 <div class="container">
   <h2>Liste des laptops disponibles</h2>
+  <input class="btn-primary" type="file" (change)="onFileChange($event)" multiple="false" />
+  <div *ngIf="submitbut">
+    <button class="btn-primary" (click)='submit()'>Submit</button>
+  </div> 
   <div class="row mt-4 table-responsive">
     <!-- Liste Produits -->
     <table class="table table-bordered table-striped table-sm">
