@@ -10,7 +10,7 @@ import { IAuths } from '../../models/auths';
 })
 
 export class LoginComponent implements OnInit {
-  //isFormInvalid = false;
+  
   areCredentialsInvalid = false;
 
   constructor(private _authenticationService: AuthenticationService) {
@@ -18,13 +18,12 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.areCredentialsInvalid = false;
-    //this.isFormInvalid = this._authenticationService.isAuthenticated;
-    //console.log(this.areCredentialsInvalid);
+   
   }
 
   onSubmit(loginForm: NgForm){
     if (!loginForm.form.valid) {
-      //this.isFormInvalid = true;
+     
       this.areCredentialsInvalid = false;
       return;
     }
@@ -36,9 +35,9 @@ export class LoginComponent implements OnInit {
       email: loginForm.value.email,
       password: loginForm.value.password
     };
-    //console.log(signInData)
+    
     if (!this._authenticationService.authenticate(signInData)) {
-      //this.isFormInvalid = false;
+    
       this.areCredentialsInvalid = true;
     }
   }

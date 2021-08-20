@@ -1,11 +1,25 @@
 <!-- Page Content -->
 <div class="container">
     <div class="d-flex flex-row justify-content-between">
-      <h2 class="p-2">Liste des laptops disponibles</h2>
+      <h2 class="p-2">Liste des Produits vendu :</h2>
   
-      <div class="p-2">
+      <div class="p-2 m-2">
+        <div class="custom-file">
+          <input type="file"
+            class="btn btn-primary m-2"
+            id="customFile"
+            multiple="false" 
+            (change)="onFileChange($event)">
+
+
+          
+          <button *ngIf="submitbut" class="btn btn-light m-2" (click)="submit()">Confirmer</button>
+        </div>
+
+        <br>
+
         <div>
-          <button class="btn btn-success" (click)='export()'>Exporter</button>
+          <button class="btn btn-success m-2" (click)='export()'>Exporter</button>
         </div> 
       </div>
   
@@ -14,48 +28,59 @@
       <!-- Liste Produits -->
       <table class="table table-bordered table-striped table-sm" id="excel-table">
         <caption>Liste des laptops vondu</caption>
-        <thead class="thead-dark">
+        <thead class="thead-dark text-center">
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Modèles</th>
-            <th scope="col">Catégorie</th>
-            <th scope="col">userId</th>
-            <th scope="col">productId</th>
-            <th scope="col">brand</th>
-            <th scope="col">series</th>
-            <th scope="col">price</th>
-            <th scope="col">qty</th>
+            <th scope="col">Produit</th>
+            <th scope="col">#Produit</th>
+            <th scope="col">client</th>
+            <th scope="col">prix</th>
+            <th scope="col"> date</th>
             <th scope="col">Total</th>
             
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let laptop of laptopsSold">
-            <th scope="row">{{ laptop.id }}</th>
-            <td>
-              <strong>{{ laptop.brand }}</strong> <br />
-              {{ laptop.model }}
-            </td>
-            <td>{{ laptop.category }}</td>
-            <td>{{ laptop.userId }}</td>
-            <td>{{ laptop.productId }}</td>
-            <td>{{ laptop.brand }}</td>
-            <td>{{ laptop.series }}</td>
-            <td>{{ laptop.price }}</td>
-            <td>{{ laptop.qty }}</td>
-            <td>{{ laptop.qty * laptop.price }}</td>
+          <tr *ngFor="let prd of prdSold" class="text-center ">
+            
+          
+            <td>{{ prd.id }}</td>
+            <td>{{ prd.titre }}</td>
+            <td>{{ prd.productId }}</td>
+            <td>{{ prd.userId }}</td>
+            <td>{{ prd.prix }}</td>
+            <td>{{ prd.date | date:"short" }}</td>
+            <td>{{ prd.prix *1.2 }}</td>
+
+            
+            
             
             
             
           </tr>
-            
-          <tr>
-            <td colspan="9">Totale</td>
-            <td>{{total}}</td>
+          
+          <tr class="thead-light">
+            <td colspan="6" class="text-center font-weight-bold">Totale</td>
+            <td class="text-center font-weight-bold">{{total}}</td>
 
           </tr>
+        
         </tbody>
       </table>
       <!-- Fin Liste Produits -->
     </div>
+  </div>
+
+  <button type="button" class="btn btn-danger" (click)="RZCheck()" *ngIf="!RZ">remettre a Zero</button>
+  <button type="button" class="btn btn-success" (click)="RZCheck()" *ngIf="RZ">Annuler</button>
+  <div class="input-group mb-3" *ngIf="RZ">
+    <span class="input-group-text" id="inputGroup-sizing-default">Mot de passe</span>
+    <input type="text" 
+    class="form-control" 
+    #pwds
+    (change)="pwd=pwds.value"
+    aria-label="Sizing example input" 
+    aria-describedby="inputGroup-sizing-default">
+
+    <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="reset()" >Tous Suprimer</button>
   </div>

@@ -18,7 +18,11 @@ import { CartComponent } from './components/cart/cart.component';
 import { EditProductsComponent } from './components/edit-products/edit-products.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ComptabiliteComponent } from './components/comptabilite/comptabilite.component';
-
+import { ProlabComponent } from './elements/prolab/prolab.component';
+import { SesamComponent } from './elements/sesam/sesam.component';
+import { ReviveComponent } from './elements/revive/revive.component';
+import { WebComponent } from './elements/web/web.component';
+//import { NgxImageZoomModule } from 'ngx-image-zoom';
 
 @NgModule({
   declarations: [
@@ -35,13 +39,18 @@ import { ComptabiliteComponent } from './components/comptabilite/comptabilite.co
     CartComponent,
     EditProductsComponent,
     RegisterComponent,
-    ComptabiliteComponent
+    ComptabiliteComponent,
+    ProlabComponent,
+    SesamComponent,
+    ReviveComponent,
+    WebComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule
+    //NgxImageZoomModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

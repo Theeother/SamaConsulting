@@ -11,44 +11,47 @@ import { CartService } from '../../services/cart.service';
 export class ProductsComponent implements OnInit {
 
   public products:IProduct[] = [];
-  filteredProducts: IProduct[] = [];
-  filterCritere: string = "";
-  laptopDetails: any={};
-
+  sol:string;
+  
   constructor(private _productService : ProductsService, public _cartService: CartService) {
   }
 
   ngOnInit(): void {
     this._productService.getProducts().subscribe(data =>{
       this.products = data;
-      this.filteredProducts = this.products;
     });
+    this.sol = "prolab";
+    //console.log(this.products);
   }
 
   // Ajout des produits au panier (the shopping cart)
-  addProductToCart(lap: IProduct){
-    this._cartService.AddProduct(lap);
+  addProductToCart(){
+    for (let prd of this.products){
+      if (this.sol==prd.titre){
+        this._cartService.AddProduct(prd);
+        console.log(this._cartService.ListeProductsSelected)
+      }
+      
+  }
   }
 
   // Afficher détails produits
-  showLaptopDetails(id: number) {
-    this._productService.getById(id).subscribe(data => {
-      this.laptopDetails = data;
-    });
+  setSol(s:string){
+    this.sol=s;
+  }
+  
+  getPrice(prd:string):number{
+    for(let p of this.products){
+      if (p.titre==prd)
+        return p.prix;
+    }
   }
 
-  cancelLaptopDetails() {
-    this.laptopDetails = {};
+  btnActive(prd:string):boolean{
+    for(let p of this.products){
+      if (p.titre==prd){
+        //console.log(p.disp);
+        return !p.disp;}
+    }
   }
-
-  // Filtrer produits par catégorie:
-  categoryFilter(critere: string){
-    this.filterCritere = critere;
-    this.filteredProducts = this.filterCritere ? this.performFilter(this.filterCritere) : this.products;
-  }
-
-  performFilter(critere: string): IProduct[] {
-    return this.products.filter((prod: IProduct)=> prod.category === critere);
-  }
-
 }

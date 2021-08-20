@@ -6,6 +6,7 @@ import { ProductsService } from '../../services/products.service';
 import { SellService } from '../../services/sell.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -22,6 +23,7 @@ export class CartComponent implements OnInit {
   laptopsList:IProduct[];
   laptopsSold:IProductSold[]=[];
   soldItem=<IProductSold>{};
+  removing:IProduct2[];
   // Pour la génération du code facture
   codeFacture = '#LAP'+ this.toDayDate.replace(/-/g,'')+ this.toDayTime.replace(/:/g,'');
 
@@ -58,6 +60,7 @@ export class CartComponent implements OnInit {
 
   payer(){
     this.soldItem.userId=this._authenticationService.utilisateurEnCours.id;
+    console.log(this._cartService.ListeProductsSelected);
     for (let laptop of this._cartService.ListeProductsSelected){
       //tan9is l stock
 
@@ -65,7 +68,7 @@ export class CartComponent implements OnInit {
         return (u.id==laptop.id);
       })[0];
       
-      this.product.stock-=laptop.qty;
+      
       this._productService.updateProduct(laptop.id, this.product).subscribe(res=>{
         this.getLaptopData();
       });
@@ -73,19 +76,26 @@ export class CartComponent implements OnInit {
       // adding to sold items for comptabelité
 
       this.soldItem.productId=this.product.id;
-      this.soldItem.category=this.product.category;
-      this.soldItem.brand=this.product.brand;
-      this.soldItem.model=this.product.model;
-      this.soldItem.series=this.product.series;
-      this.soldItem.price=this.product.price;
-      this.soldItem.urlImage=this.product.urlImage;
-      this.soldItem.qty=laptop.qty;
+      this.soldItem.titre=this.product.titre;
+      this.soldItem.prix=this.product.prix;
+      this.soldItem.userId=this._authenticationService.utilisateurEnCours.firstName + " " +
+      this._authenticationService.utilisateurEnCours.lastName;
+
+      this.soldItem.date=this.toDay;
+
+     
+
+
       this.addSoldLap(this.soldItem);
       
-
-
-
     }
+
+    
+    this._cartService.ListeProductsSelected=[];
+
+    
+
+
     this.router.navigate(['home']);
   }
 
@@ -102,7 +112,8 @@ export class CartComponent implements OnInit {
     this._sellService.addProduct(lap).subscribe(res => {
       this.laptopsSold=[...this.laptopsSold,lap];
       console.log(this.laptopsSold);
-    });
+    }); 
+    this.getLaptopData();
   }
 
 }

@@ -28,6 +28,9 @@ export class SellService {
     return this.httpClient.get<IProductSold>(`${this._apiUrl+'/'+id}`);
   }
 
+  deleteALL(id: number) {
+    return this.httpClient.delete(`${this._apiUrl+'/'}`);
+  }
   //updateProduct(id: number, p: IProductSold) {
   //  return this.httpClient.put(`${this._apiUrl+'/'+id}`, p);
   //}
