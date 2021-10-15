@@ -10,7 +10,6 @@ import { ProductsComponent } from './components/products/products.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CarouselComponent } from './elements/carousel/carousel.component';
-import { FeaturettesComponent } from './elements/featurettes/featurettes.component';
 import { FullPictureHeadingComponent } from './elements/full-picture-heading/full-picture-heading.component';
 import { LoginComponent } from './components/login/login.component';
 import { CartComponent } from './components/cart/cart.component';
@@ -31,7 +30,7 @@ import { WebComponent } from './elements/web/web.component';
     HeaderComponent,
     FooterComponent,
     CarouselComponent,
-    FeaturettesComponent,
+    
     FullPictureHeadingComponent,
     LoginComponent,
     CartComponent,
